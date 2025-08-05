@@ -1,96 +1,68 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Easy Lyrics</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 20px;
-      background: #f2f2f2;
-    }
-
-    h1 {
-      text-align: center;
-    }
-
-    textarea, input, button, select {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    .viewer {
-      height: 300px;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      background: white;
-      padding: 20px;
-      border: 1px solid #ccc;
-      margin-top: 20px;
-    }
-
-    .controls {
-      display: flex;
-      gap: 10px;
-    }
-
-    .controls button, .controls select {
-      flex: 1;
-    }
-  </style>
 </head>
 <body>
   <h1>🎸 Easy Lyrics</h1>
 
-  <input type="text" id="title" placeholder="Título da música" />
-  <textarea id="lyrics" rows="10" placeholder="Cole aqui a cifra/letra..."></textarea>
-  <button onclick="saveSong()">Salvar Cifra</button>
+  <textarea id="htmlInput" rows="15" cols="100" placeholder="Cole aqui o código-fonte da página do Cifra Club..."></textarea><br><br>
 
-  <div class="controls">
-    <button onclick="startScroll()">▶️ Scroll</button>
-    <button onclick="stopScroll()">⏹️ Parar</button>
-    <select id="speedSelect">
-      <option value="50">Rápido</option>
-      <option value="100" selected>Médio</option>
-      <option value="150">Devagar</option>
-    </select>
-  </div>
+  <button onclick="extrairCifra()">🎼 Extrair Cifra</button>
+  <button onclick="verHistorico()">📚 Ver Histórico</button>
+  <button onclick="limparHistorico()">🗑️ Limpar Histórico</button>
 
-  <div class="viewer" id="viewer"></div>
+  <h2>Resultado:</h2>
+  <pre id="output"></pre>
 
   <script>
-    const viewer = document.getElementById('viewer');
-    const lyricsInput = document.getElementById('lyrics');
-    const titleInput = document.getElementById('title');
-    const speedSelect = document.getElementById('speedSelect');
-    let scrollInterval;
+    function extrairCifra() {
+      const html = document.getElementById("htmlInput").value;
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
 
-    function saveSong() {
-      const title = titleInput.value.trim();
-      const lyrics = lyricsInput.value;
-      if (!title || !lyrics) {
-        alert('Digite o título e a cifra!');
+      const cifraEl = doc.querySelector("pre.cifra");
+
+      if (cifraEl) {
+        const cifraText = cifraEl.innerText;
+        document.getElementById("output").textContent = cifraText;
+
+        salvarNoHistorico(cifraText);
+      } else {
+        document.getElementById("output").textContent = "❌ Não foi possível encontrar a cifra.";
+      }
+    }
+
+    function salvarNoHistorico(cifra) {
+      let historico = JSON.parse(localStorage.getItem("historicoCifras")) || [];
+      historico.unshift({
+        data: new Date().toLocaleString(),
+        cifra: cifra
+      });
+      localStorage.setItem("historicoCifras", JSON.stringify(historico));
+    }
+
+    function verHistorico() {
+      let historico = JSON.parse(localStorage.getItem("historicoCifras")) || [];
+      if (historico.length === 0) {
+        alert("⚠️ Nenhuma cifra salva no histórico.");
         return;
       }
 
-      localStorage.setItem('easyLyrics_' + title, lyrics);
-      viewer.innerText = lyrics;
-      viewer.scrollTop = 0;
+      let resultado = "🎵 Histórico de Cifras:\n\n";
+      historico.forEach((item, index) => {
+        resultado += `#${index + 1} – ${item.data}\n${item.cifra.slice(0, 300)}...\n\n`; // Mostra início da cifra
+      });
+
+      alert(resultado);
     }
 
-    function startScroll() {
-      const speed = parseInt(speedSelect.value);
-      stopScroll(); // garantir que só tenha 1 scroll ativo
-      scrollInterval = setInterval(() => {
-        viewer.scrollTop += 1;
-      }, speed);
-    }
-
-    function stopScroll() {
-      clearInterval(scrollInterval);
+    function limparHistorico() {
+      if (confirm("Tem certeza que deseja apagar o histórico?")) {
+        localStorage.removeItem("historicoCifras");
+        alert("✅ Histórico apagado com sucesso.");
+      }
     }
   </script>
 </body>
