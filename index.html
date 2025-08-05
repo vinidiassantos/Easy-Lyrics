@@ -1,69 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Easy Lyrics</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+      background: #f9f9f9;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+    }
+    button {
+      margin-top: 10px;
+    }
+    pre {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    .history-item {
+      cursor: pointer;
+      margin: 5px 0;
+      padding: 5px;
+      background: #eee;
+    }
+    .history-item:hover {
+      background: #ddd;
+    }
+  </style>
 </head>
 <body>
+
   <h1>🎸 Easy Lyrics</h1>
 
-  <textarea id="htmlInput" rows="15" cols="100" placeholder="Cole aqui o código-fonte da página do Cifra Club..."></textarea><br><br>
+  <textarea id="lyricsInput" placeholder="Cole aqui sua cifra..."></textarea>
+  <br>
+  <button onclick="renderLyrics()">Salvar e Exibir</button>
 
-  <button onclick="extrairCifra()">🎼 Extrair Cifra</button>
-  <button onclick="verHistorico()">📚 Ver Histórico</button>
-  <button onclick="limparHistorico()">🗑️ Limpar Histórico</button>
-
-  <h2>Resultado:</h2>
+  <h2>📄 Visualização:</h2>
   <pre id="output"></pre>
 
+  <h2>🕘 Histórico de Cifras</h2>
+  <div id="historyList"></div>
+
   <script>
-    function extrairCifra() {
-      const html = document.getElementById("htmlInput").value;
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, "text/html");
-
-      const cifraEl = doc.querySelector("pre.cifra");
-
-      if (cifraEl) {
-        const cifraText = cifraEl.innerText;
-        document.getElementById("output").textContent = cifraText;
-
-        salvarNoHistorico(cifraText);
-      } else {
-        document.getElementById("output").textContent = "❌ Não foi possível encontrar a cifra.";
-      }
+    function saveToHistory(content) {
+      const history = JSON.parse(localStorage.getItem('lyricsHistory')) || [];
+      const timestamp = new Date().toLocaleString();
+      history.unshift({ content, timestamp });
+      localStorage.setItem('lyricsHistory', JSON.stringify(history));
+      loadHistory();
     }
 
-    function salvarNoHistorico(cifra) {
-      let historico = JSON.parse(localStorage.getItem("historicoCifras")) || [];
-      historico.unshift({
-        data: new Date().toLocaleString(),
-        cifra: cifra
+    function loadHistory() {
+      const history = JSON.parse(localStorage.getItem('lyricsHistory')) || [];
+      const historyList = document.getElementById('historyList');
+      historyList.innerHTML = '';
+
+      history.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'history-item';
+        div.textContent = `${index + 1}. ${item.timestamp}`;
+        div.onclick = () => {
+          document.getElementById('lyricsInput').value = item.content;
+          document.getElementById('output').textContent = item.content;
+        };
+        historyList.appendChild(div);
       });
-      localStorage.setItem("historicoCifras", JSON.stringify(historico));
     }
 
-    function verHistorico() {
-      let historico = JSON.parse(localStorage.getItem("historicoCifras")) || [];
-      if (historico.length === 0) {
-        alert("⚠️ Nenhuma cifra salva no histórico.");
-        return;
-      }
-
-      let resultado = "🎵 Histórico de Cifras:\n\n";
-      historico.forEach((item, index) => {
-        resultado += `#${index + 1} – ${item.data}\n${item.cifra.slice(0, 300)}...\n\n`; // Mostra início da cifra
-      });
-
-      alert(resultado);
+    function renderLyrics() {
+      const lyrics = document.getElementById('lyricsInput').value;
+      document.getElementById('output').textContent = lyrics;
+      saveToHistory(lyrics);
     }
 
-    function limparHistorico() {
-      if (confirm("Tem certeza que deseja apagar o histórico?")) {
-        localStorage.removeItem("historicoCifras");
-        alert("✅ Histórico apagado com sucesso.");
-      }
-    }
+    window.onload = loadHistory;
   </script>
+
 </body>
 </html>
