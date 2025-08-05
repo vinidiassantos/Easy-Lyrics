@@ -1,95 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Easy Lyrics</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Easy Lyrics – Cifras</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
-    h1 { text-align: center; }
-    .container { display: flex; gap: 40px; }
-    .genres, .songs { flex: 1; }
-    .lyrics { margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; white-space: pre-wrap; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 8px; cursor: pointer; }
-    li:hover { text-decoration: underline; }
+    body { margin:0; font-family:sans-serif; background:#fafafa; color:#333; }
+    header { padding:1rem; background:#444; color:#fff; text-align:center; }
+    .main { display:flex; flex-direction:column; min-height:100vh; }
+    .content { display:flex; flex:1; overflow:hidden; }
+    .sidebar { width:240px; background:#fff; border-right:1px solid #ddd; overflow-y:auto; }
+    .sidebar h2 { margin:1rem; font-size:1.2rem; }
+    .sidebar ul { list-style:none; padding:0 1rem; }
+    .sidebar li { padding:.5rem 0; cursor:pointer; border-bottom:1px solid #eee; }
+    .sidebar li:hover, .sidebar li.active { background:#f0f0f0; }
+    .song-list { flex:1; padding:1rem; overflow-y:auto; }
+    .song-list h3 { margin-top:0; }
+    .song-list ul { list-style:none; padding:0; }
+    .song-list li { padding:.5rem; cursor:pointer; border-bottom:1px solid #eee; }
+    .song-list li:hover, .song-list li.active { background:#eef; }
+    .lyrics-overlay {
+      position:fixed; top:0; left:0; width:100%; height:100%;
+      background:#fff; padding:2rem; overflow:auto;
+      z-index:10; display:none; flex-direction:column;
+    }
+    .lyrics-overlay h2 { margin-top:0; }
+    .lyrics-overlay pre { font-family:'Roboto Mono',monospace; white-space:pre-wrap; line-height:1.5; }
+    .close-btn {
+      position:absolute; top:1rem; right:1rem;
+      background:#444;color:#fff;border:none;padding:.5rem .8rem;
+      cursor:pointer;font-size:1rem; border-radius:4px;
+    }
+    @media(max-width:768px) {
+      .content { flex-direction:column; }
+      .sidebar { width:100%; height:200px; }
+      .song-list { padding:0.5rem; }
+    }
   </style>
 </head>
 <body>
-  <h1>🎸 Easy Lyrics</h1>
-
-  <div class="container">
-    <div class="genres">
-      <h2>🎵 Estilos</h2>
-      <ul id="genreList"></ul>
-    </div>
-    <div class="songs">
-      <h2>🎼 Músicas</h2>
-      <ul id="songList"></ul>
+  <header><h1>Easy Lyrics</h1></header>
+  <div class="main">
+    <div class="content">
+      <nav class="sidebar">
+        <h2>Estilos</h2>
+        <ul id="genreList"></ul>
+      </nav>
+      <section class="song-list">
+        <h3 id="songListTitle">Selecione um estilo</h3>
+        <ul id="songList"></ul>
+      </section>
     </div>
   </div>
 
-  <div class="lyrics" id="lyrics"></div>
+  <div class="lyrics-overlay" id="lyricsOverlay">
+    <button class="close-btn" onclick="closeLyrics()">Fechar</button>
+    <div id="lyricsContent"></div>
+  </div>
 
   <script>
     const data = {
       "Rock Nacional": [
-        {
-          title: "Tempo Perdido",
-          lyrics: `Todos os dias quando acordo
-Não tenho mais o tempo que passou
-Mas tenho muito tempo
-Temos todo o tempo do mundo...
-
-[G] [D] [Em] [C]`
-        },
-        {
-          title: "Pais e Filhos",
-          lyrics: `Estátuas e cofres
-E paredes pintadas
-Ninguém sabe o que aconteceu...
-
-[C] [G] [Am] [F]`
-        }
+        { title: "Tempo Perdido", lyrics: `[Refrão]\nSomos tão jovens...\n\n[G]  [D]  [Em]  [C]` },
+        { title: "Pais e Filhos", lyrics: `[Verso]\nEstátuas e cofres...\n\n[C]  [G]  [Am]  [F]` }
       ],
       "Pop Internacional": [
-        {
-          title: "Let it Be",
-          lyrics: `When I find myself in times of trouble
-Mother Mary comes to me...
-
-[C] [G] [Am] [F]`
-        }
+        { title: "Let It Be", lyrics: `[Intro]\nWhen I find myself...\n\n[C]  [G]  [Am]  [F]` }
       ]
     };
 
     const genreList = document.getElementById('genreList');
     const songList = document.getElementById('songList');
-    const lyricsDiv = document.getElementById('lyrics');
+    const songListTitle = document.getElementById('songListTitle');
+    const overlay = document.getElementById('lyricsOverlay');
+    const lyricsContent = document.getElementById('lyricsContent');
 
     function renderGenres() {
       genreList.innerHTML = '';
       Object.keys(data).forEach(genre => {
         const li = document.createElement('li');
         li.textContent = genre;
-        li.onclick = () => renderSongs(genre);
+        li.onclick = () => selectGenre(genre, li);
         genreList.appendChild(li);
       });
     }
 
-    function renderSongs(genre) {
+    let activeGenreLi;
+    function selectGenre(genre, el) {
+      if (activeGenreLi) activeGenreLi.classList.remove('active');
+      el.classList.add('active');
+      activeGenreLi = el;
+      songListTitle.textContent = genre;
       songList.innerHTML = '';
-      lyricsDiv.innerHTML = '';
       data[genre].forEach(song => {
         const li = document.createElement('li');
         li.textContent = song.title;
-        li.onclick = () => renderLyrics(song);
+        li.onclick = () => openLyrics(song);
         songList.appendChild(li);
       });
     }
 
-    function renderLyrics(song) {
-      lyricsDiv.innerHTML = `<h2>${song.title}</h2><pre>${song.lyrics}</pre>`;
+    function openLyrics(song) {
+      lyricsContent.innerHTML = `<h2>${song.title}</h2><pre>${song.lyrics}</pre>`;
+      overlay.style.display = 'flex';
+    }
+
+    function closeLyrics() {
+      overlay.style.display = 'none';
     }
 
     renderGenres();
