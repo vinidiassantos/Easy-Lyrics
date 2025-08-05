@@ -3,53 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Chords</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Easy Lyrics</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f4f4f4; }
+    h1 { text-align: center; }
+    .container { display: flex; gap: 40px; }
+    .genres, .songs { flex: 1; }
+    .lyrics { margin-top: 30px; background: #fff; padding: 20px; border-radius: 8px; white-space: pre-wrap; }
+    ul { list-style: none; padding: 0; }
+    li { margin-bottom: 8px; cursor: pointer; }
+    li:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>🎸 Chords</h1>
-    <nav>
-      <ul>
-        <li><a href="pages/rock.html">Rock</a></li>
-        <li><a href="pages/sertanejo.html">Sertanejo</a></li>
-        <li><a href="pages/samba.html">Samba</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1>🎸 Easy Lyrics</h1>
 
-  <main>
-    <h2>Welcome!</h2>
-    <p>Choice your musical genre</p>
-  </main>
+  <div class="container">
+    <div class="genres">
+      <h2>🎵 Estilos</h2>
+      <ul id="genreList"></ul>
+    </div>
+    <div class="songs">
+      <h2>🎼 Músicas</h2>
+      <ul id="songList"></ul>
+    </div>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Vini | Easy Lyrics</p>
-  </footer>
+  <div class="lyrics" id="lyrics"></div>
 
-  <script src="script.js"></script>
-  <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <script>
+    const data = {
+      "Rock Nacional": [
+        {
+          title: "Tempo Perdido",
+          lyrics: `Todos os dias quando acordo
+Não tenho mais o tempo que passou
+Mas tenho muito tempo
+Temos todo o tempo do mundo...
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCABDdasnNb0kCHyvW-X2g-Vct5w3TbTIk",
-    authDomain: "vini-easy-lyrics.firebaseapp.com",
-    projectId: "vini-easy-lyrics",
-    storageBucket: "vini-easy-lyrics.firebasestorage.app",
-    messagingSenderId: "856758043115",
-    appId: "1:856758043115:web:cc74902c8ed1e1f51499ae",
-    measurementId: "G-S5ZCTL1TB2"
-  };
+[G] [D] [Em] [C]`
+        },
+        {
+          title: "Pais e Filhos",
+          lyrics: `Estátuas e cofres
+E paredes pintadas
+Ninguém sabe o que aconteceu...
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+[C] [G] [Am] [F]`
+        }
+      ],
+      "Pop Internacional": [
+        {
+          title: "Let it Be",
+          lyrics: `When I find myself in times of trouble
+Mother Mary comes to me...
+
+[C] [G] [Am] [F]`
+        }
+      ]
+    };
+
+    const genreList = document.getElementById('genreList');
+    const songList = document.getElementById('songList');
+    const lyricsDiv = document.getElementById('lyrics');
+
+    function renderGenres() {
+      genreList.innerHTML = '';
+      Object.keys(data).forEach(genre => {
+        const li = document.createElement('li');
+        li.textContent = genre;
+        li.onclick = () => renderSongs(genre);
+        genreList.appendChild(li);
+      });
+    }
+
+    function renderSongs(genre) {
+      songList.innerHTML = '';
+      lyricsDiv.innerHTML = '';
+      data[genre].forEach(song => {
+        const li = document.createElement('li');
+        li.textContent = song.title;
+        li.onclick = () => renderLyrics(song);
+        songList.appendChild(li);
+      });
+    }
+
+    function renderLyrics(song) {
+      lyricsDiv.innerHTML = `<h2>${song.title}</h2><pre>${song.lyrics}</pre>`;
+    }
+
+    renderGenres();
+  </script>
 </body>
 </html>
