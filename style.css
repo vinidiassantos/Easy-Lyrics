@@ -1,46 +1,38 @@
-* {
+body {
+  font-family: sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  background: #f5f5f5;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background: #f4f4f4;
-  color: #333;
+header, footer {
+  background: #222;
+  color: white;
+  text-align: center;
   padding: 10px;
 }
 
-header {
-  background: #333;
-  color: #fff;
-  padding: 20px;
+nav {
+  padding: 10px;
   text-align: center;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 10px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: white;
-  font-weight: bold;
+input#search {
+  padding: 8px;
+  width: 60%;
+  font-size: 16px;
 }
 
 main {
-  margin-top: 30px;
-  text-align: center;
+  padding: 20px;
 }
 
-footer {
-  margin-top: 40px;
-  text-align: center;
-  color: #777;
+ul#song-list li {
+  list-style: none;
+  margin: 10px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0066cc;
 }
