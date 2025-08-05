@@ -10,7 +10,7 @@ class CifrasApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Minhas Cifras',
+      title: 'My Chords',
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
