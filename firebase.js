@@ -4,9 +4,9 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_DOMINIO.firebaseapp.com",
-  projectId: "SEU_PROJECT_ID",
+  apiKey: "856758043115-8ktdgoa452kc6nn4gqisunpb14is7eqg.apps.googleusercontent.com",
+  authDomain: "https://vinidiassantos.github.io/Easy-Lyrics/",
+  projectId: "vini-easy-lyrics",
   storageBucket: "SEU_BUCKET.appspot.com",
   messagingSenderId: "SEU_SENDER_ID",
   appId: "SEU_APP_ID"
