@@ -1,0 +1,19 @@
+// components.js
+document.addEventListener("DOMContentLoaded", function () {
+  const backButton = document.createElement("a");
+  backButton.href = "/Easy-Lyrics/rock.html";
+  backButton.className = "back-button";
+  backButton.innerHTML = "← Back";
+
+  const header = document.querySelector("header");
+  if (header) {
+    header.insertBefore(backButton, header.firstChild);
+  }
+
+  // Se quiser adicionar o botão também no fim do conteúdo
+  const main = document.querySelector("main");
+  if (main) {
+    const backClone = backButton.cloneNode(true);
+    main.appendChild(backClone);
+  }
+});
