@@ -255,3 +255,11 @@ main {
     font-size: 0.95em;
   }
 }
+pre {
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-size: 1.05rem; /* Aumentado */
+  font-weight: bold;  /* Negrito */
+  text-align: left;
+  margin: 0 auto;
+}
