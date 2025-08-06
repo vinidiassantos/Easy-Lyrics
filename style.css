@@ -93,9 +93,24 @@ h1 {
 }
 
 .song-content {
-  font-size: 0.95em;
   font-family: monospace;
   line-height: 1.4;
+  text-align: left;
+  width: 100%;
+}
+
+/* Novos estilos para título e detalhes */
+.song-content .title {
+  font-weight: bold;
+  font-size: 1.05em;
+  margin-bottom: 6px;
+  color: #eee;
+}
+
+.song-content .details {
+  font-size: 0.9em;
+  color: #ccc;
+  white-space: normal;
 }
 
 /* === Responsividade === */
@@ -117,5 +132,13 @@ h1 {
 
   .song-content {
     font-size: 0.85em;
+  }
+
+  .song-content .title {
+    font-size: 0.95em;
+  }
+
+  .song-content .details {
+    font-size: 0.8em;
   }
 }
