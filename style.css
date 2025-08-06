@@ -50,7 +50,7 @@ h1 {
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 24px 32px; /* altura aumentada em 20% */
+  padding: 24px 32px;
   font-size: 1.1em;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -66,7 +66,7 @@ h1 {
 /* === Grade de músicas nas páginas internas === */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* blocos compactos */
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
   padding: 20px;
 }
@@ -76,12 +76,16 @@ h1 {
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 8px; /* altura reduzida */
-  text-align: left;
+  padding: 4px; /* altura reduzida pela metade */
+  text-align: center; /* centraliza o conteúdo */
   font-size: 0.95em;
   cursor: pointer;
   transition: background-color 0.3s ease;
   white-space: pre-wrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100px; /* altura fixa mais compacta */
 }
 
 .song-button:hover {
@@ -91,7 +95,7 @@ h1 {
 .song-title {
   font-weight: bold;
   font-size: 1.1em;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .song-details {
@@ -113,7 +117,8 @@ h1 {
 
   .song-button {
     font-size: 0.9em;
-    padding: 6px;
+    padding: 3px;
+    height: auto;
   }
 
   .song-title {
