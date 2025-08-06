@@ -151,3 +151,27 @@ footer {
 .song-item:hover {
   background: #ddd;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.song-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.song-item a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.song-item:hover {
+  background-color: #e0e0e0;
+}
