@@ -104,7 +104,6 @@ h1 {
   font-size: 1.05em;
   margin-bottom: 6px;
   color: #eee;
-  /* Para alinhar tudo numa linha, usamos flex */
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -118,7 +117,29 @@ h1 {
   font-size: 0.9em;
   color: #ccc;
   white-space: normal;
-  padding-left: 4px; /* leve indentação */
+  padding-left: 4px;
+}
+
+/* === Centralização para página de cifras === */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+}
+
+.song {
+  max-width: 800px;
+  width: 100%;
+}
+
+.chords {
+  font-family: monospace;
+  white-space: pre-line;
+  text-align: left;
+  margin: 0 auto;
 }
 
 /* === Responsividade === */
