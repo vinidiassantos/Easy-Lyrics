@@ -36,7 +36,7 @@ h1 {
   margin-bottom: 10px;
 }
 
-/* === Menu principal (index.html) === */
+/* === Menu principal === */
 .menu-container {
   display: flex;
   flex-wrap: wrap;
@@ -63,10 +63,10 @@ h1 {
   background-color: #3949ab;
 }
 
-/* === Grade de músicas nas páginas internas === */
+/* === Grade de músicas === */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 12px;
   padding: 20px;
 }
@@ -76,31 +76,26 @@ h1 {
   color: #fff;
   border: none;
   border-radius: 8px;
-  padding: 4px; /* altura reduzida pela metade */
-  text-align: center; /* centraliza o conteúdo */
+  padding: 10px;
+  text-align: center;
   font-size: 0.95em;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  white-space: pre-wrap;
+  white-space: normal;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100px; /* altura fixa mais compacta */
+  height: auto;
 }
 
 .song-button:hover {
   background-color: #3949ab;
 }
 
-.song-title {
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-bottom: 4px;
-}
-
-.song-details {
+.song-content {
+  font-size: 0.95em;
   font-family: monospace;
-  font-size: 0.9em;
+  line-height: 1.4;
 }
 
 /* === Responsividade === */
@@ -112,20 +107,15 @@ h1 {
   }
 
   .grid-container {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .song-button {
     font-size: 0.9em;
-    padding: 3px;
-    height: auto;
+    padding: 8px;
   }
 
-  .song-title {
-    font-size: 1em;
-  }
-
-  .song-details {
+  .song-content {
     font-size: 0.85em;
   }
 }
