@@ -8,127 +8,139 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #fdf6e3;
-      margin: 20px;
+      margin: 0;
+      padding: 0;
       color: #333;
     }
-    h1 {
+
+    header, footer {
       text-align: center;
-      color: #b22222;
+      padding: 20px;
+      background-color: #eee;
     }
-    .song-item {
-      margin-bottom: 25px;
-      padding: 10px;
-      border-bottom: 1px solid #ccc;
-    }
-    .song-item a {
-      font-size: 1.2em;
-      color: #1a237e;
+
+    .back-button {
+      display: inline-block;
+      background-color: #1a237e;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
+      margin-bottom: 10px;
     }
-    .song-details {
-      font-size: 0.9em;
-      color: #444;
-      margin-top: 5px;
-      font-family: monospace;
+
+    h1 {
+      color: #b22222;
+      margin-bottom: 10px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .song-button {
+      background-color: #1a237e;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: left;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
       white-space: pre-wrap;
+    }
+
+    .song-button:hover {
+      background-color: #3949ab;
+    }
+
+    .song-title {
+      font-weight: bold;
+      font-size: 1.1em;
+      margin-bottom: 8px;
+    }
+
+    .song-details {
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+
+    footer {
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Músicas MPB</h1>
 
-  <div class="song-item">
-    <a href="#">Chico Buarque – Cálice</a>
-    <p class="song-details">
-      Tom: Am<br>
-      Am           Dm           G7           C  
-      Pai, afasta de mim esse cálice
-    </p>
+  <header>
+    <a href="index.html" class="back-button">← Voltar para Home</a>
+    <h1>Músicas MPB</h1>
+  </header>
+
+  <div class="grid-container">
+
+    <button class="song-button">
+      <div class="song-title">Chico Buarque – Cálice</div>
+      <div class="song-details">Tom: Am — Am Dm G7 C  Pai, afasta de mim esse cálice</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Elis Regina – Como Nossos Pais</div>
+      <div class="song-details">Tom: F#m — F#m D A E  Não quero lhe falar, meu grande amor</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Caetano Veloso – Sozinho</div>
+      <div class="song-details">Tom: C — C G Am F  Às vezes no silêncio da noite</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Gilberto Gil – Aquele Abraço</div>
+      <div class="song-details">Tom: G — G C D G  Alô, alô, Realengo! Aquele abraço!</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Milton Nascimento – Travessia</div>
+      <div class="song-details">Tom: Em — Em B7 Em A  Quando você foi embora, fez-se noite em meu viver</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Djavan – Oceano</div>
+      <div class="song-details">Tom: Dm — Dm Gm C F  Assim que o dia amanheceu lá no mar alto da paixão</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Marisa Monte – Ainda Bem</div>
+      <div class="song-details">Tom: C — C G Am F  Ainda bem que agora encontrei você</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Zé Ramalho – Chão de Giz</div>
+      <div class="song-details">Tom: Em — Em D C B7  Eu desço dessa solidão, espalho coisas sobre o chão</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Nando Reis – Por Onde Andei</div>
+      <div class="song-details">Tom: G — G D Em C  Por onde andei, enquanto você me procurava?</div>
+    </button>
+
+    <button class="song-button">
+      <div class="song-title">Legião Urbana – Tempo Perdido</div>
+      <div class="song-details">Tom: D — D G Bm A  Todos os dias quando acordo</div>
+    </button>
+
+    <!-- Adicione mais músicas aqui seguindo o mesmo padrão -->
+
   </div>
 
-  <div class="song-item">
-    <a href="#">Elis Regina – Como Nossos Pais</a>
-    <p class="song-details">
-      Tom: F#m<br>
-      F#m           D           A           E  
-      Não quero lhe falar, meu grande amor
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Caetano Veloso – Sozinho</a>
-    <p class="song-details">
-      Tom: C<br>
-      C           G           Am           F  
-      Às vezes no silêncio da noite
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Gilberto Gil – Aquele Abraço</a>
-    <p class="song-details">
-      Tom: G<br>
-      G           C           D           G  
-      Alô, alô, Realengo! Aquele abraço!
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Milton Nascimento – Travessia</a>
-    <p class="song-details">
-      Tom: Em<br>
-      Em           B7           Em           A  
-      Quando você foi embora, fez-se noite em meu viver
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Djavan – Oceano</a>
-    <p class="song-details">
-      Tom: Dm<br>
-      Dm           Gm           C           F  
-      Assim que o dia amanheceu lá no mar alto da paixão
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Marisa Monte – Ainda Bem</a>
-    <p class="song-details">
-      Tom: C<br>
-      C           G           Am           F  
-      Ainda bem que agora encontrei você
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Zé Ramalho – Chão de Giz</a>
-    <p class="song-details">
-      Tom: Em<br>
-      Em           D           C           B7  
-      Eu desço dessa solidão, espalho coisas sobre o chão
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Nando Reis – Por Onde Andei</a>
-    <p class="song-details">
-      Tom: G<br>
-      G           D           Em           C  
-      Por onde andei, enquanto você me procurava?
-    </p>
-  </div>
-
-  <div class="song-item">
-    <a href="#">Legião Urbana – Tempo Perdido</a>
-    <p class="song-details">
-      Tom: D<br>
-      D           G           Bm           A  
-      Todos os dias quando acordo
-    </p>
-  </div>
-
-  <!-- ... mais 30 músicas seguem o mesmo padrão ... -->
+  <footer>
+    <a href="index.html" class="back-button">← Voltar para Home</a>
+  </footer>
 
 </body>
 </html>
