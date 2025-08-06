@@ -77,14 +77,14 @@ h1 {
   border: none;
   border-radius: 8px;
   padding: 10px;
-  text-align: center;
+  text-align: left;
   font-size: 0.95em;
   cursor: pointer;
   transition: background-color 0.3s ease;
   white-space: normal;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: auto;
 }
 
@@ -95,22 +95,30 @@ h1 {
 .song-content {
   font-family: monospace;
   line-height: 1.4;
-  text-align: left;
   width: 100%;
 }
 
-/* Novos estilos para título e detalhes */
+/* Estilos para título e detalhes */
 .song-content .title {
   font-weight: bold;
   font-size: 1.05em;
   margin-bottom: 6px;
   color: #eee;
+  /* Para alinhar tudo numa linha, usamos flex */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.song-content .title > span {
+  /* Cada parte (artista, música, tom) fica num span */
 }
 
 .song-content .details {
   font-size: 0.9em;
   color: #ccc;
   white-space: normal;
+  padding-left: 4px; /* leve indentação */
 }
 
 /* === Responsividade === */
