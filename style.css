@@ -124,3 +124,30 @@ footer {
     padding: 10px;
   }
 }
+
+/* === Grade de músicas nas páginas internas === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+  width: 100%;
+  max-width: 800px;
+  padding: 10px;
+  justify-content: center;
+}
+
+.song-item {
+  background: #eee;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.song-item:hover {
+  background: #ddd;
+}
