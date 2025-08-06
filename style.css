@@ -66,7 +66,7 @@ h1 {
 /* === Grade de músicas === */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 12px;
   padding: 20px;
 }
@@ -83,7 +83,7 @@ h1 {
   transition: background-color 0.3s ease;
   white-space: normal;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   height: auto;
 }
