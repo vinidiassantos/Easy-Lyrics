@@ -108,7 +108,6 @@ pre {
   transition: background-color 0.3s ease;
   white-space: normal;
   display: flex;
-  flex-direction: column; /* <-- garante que título e detalhes fiquem em coluna */
   align-items: center;
   justify-content: center;
   height: auto;
@@ -122,11 +121,6 @@ pre {
   font-size: 0.95em;
   font-family: monospace;
   line-height: 1.4;
-}
-
-/* === Espaçamento entre título e detalhes === */
-.song-button .details {
-  margin-top: 8px; /* <-- aqui está o espaço extra */
 }
 
 /* === Responsividade === */
