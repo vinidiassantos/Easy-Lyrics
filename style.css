@@ -10,6 +10,16 @@ body {
   background-color: #fdf6e3;
   color: #333;
   min-height: 100vh;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* === Container da página de música === */
+.container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
 }
 
 /* === Header e Footer === */
@@ -17,6 +27,7 @@ header, footer {
   text-align: center;
   padding: 20px;
   background-color: #eee;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -34,6 +45,20 @@ h1 {
   text-decoration: none;
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+/* === Conteúdo da música === */
+pre {
+  white-space: pre-wrap;
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.chord {
+  color: red;
+  font-weight: bold;
 }
 
 /* === Menu principal === */
@@ -77,14 +102,14 @@ h1 {
   border: none;
   border-radius: 8px;
   padding: 10px;
-  text-align: left;
+  text-align: center;
   font-size: 0.95em;
   cursor: pointer;
   transition: background-color 0.3s ease;
   white-space: normal;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   height: auto;
 }
 
@@ -93,57 +118,26 @@ h1 {
 }
 
 .song-content {
+  font-size: 0.95em;
   font-family: monospace;
   line-height: 1.4;
-  width: 100%;
-}
-
-/* Estilos para título e detalhes */
-.song-content .title {
-  font-weight: bold;
-  font-size: 1.05em;
-  margin-bottom: 6px;
-  color: #eee;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.song-content .title > span {
-  /* Cada parte (artista, música, tom) fica num span */
-}
-
-.song-content .details {
-  font-size: 0.9em;
-  color: #ccc;
-  white-space: normal;
-  padding-left: 4px;
-}
-
-/* === Centralização para página de cifras === */
-main {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  padding: 2rem;
-}
-
-.song {
-  max-width: 800px;
-  width: 100%;
-}
-
-.chords {
-  font-family: monospace;
-  white-space: pre-line;
-  text-align: left;
-  margin: 0 auto;
 }
 
 /* === Responsividade === */
 @media (max-width: 600px) {
+  body {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  pre {
+    font-size: 0.85rem;
+  }
+
   .menu-button {
     width: 100%;
     font-size: 1em;
@@ -162,104 +156,4 @@ main {
   .song-content {
     font-size: 0.85em;
   }
-
-  .song-content .title {
-    font-size: 0.95em;
-  }
-
-  .song-content .details {
-    font-size: 0.8em;
-  }
-}
-.chords-container {
-  max-width: 720px;
-  margin: 40px auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  font-family: monospace;
-  line-height: 1.6;
-  white-space: pre-wrap;
-}
-/* === Estilos para página de música individual === */
-.song-container {
-  max-width: 800px;
-  margin: 40px auto;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 32px 24px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.song-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.song-title {
-  font-size: 1.8em;
-  font-weight: bold;
-  color: #444;
-}
-
-.song-key {
-  font-size: 1em;
-  color: #888;
-  margin-top: 6px;
-}
-
-.lyrics-chords {
-  font-family: monospace;
-  white-space: pre-wrap;
-  font-size: 1em;
-  background-color: #f9f9f9;
-  padding: 20px;
-  border-left: 4px solid #ffcc00;
-  border-radius: 4px;
-  overflow-x: auto;
-  text-align: left;
-  line-height: 1.6;
-}
-
-.nav-buttons {
-  margin-top: 24px;
-  text-align: center;
-}
-
-.nav-buttons a {
-  display: inline-block;
-  background-color: #1a237e;
-  color: white;
-  padding: 10px 18px;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  margin: 0 8px;
-  transition: background-color 0.3s ease;
-}
-
-.nav-buttons a:hover {
-  background-color: #3949ab;
-}
-
-@media (max-width: 600px) {
-  .song-container {
-    padding: 20px 16px;
-  }
-  .song-title {
-    font-size: 1.5em;
-  }
-  .lyrics-chords {
-    font-size: 0.95em;
-  }
-}
-pre {
-  white-space: pre-wrap;
-  font-family: 'Courier New', monospace;
-  font-size: 1.05rem; /* Aumentado */
-  font-weight: bold;  /* Negrito */
-  text-align: left;
-  margin: 0 auto;
 }
