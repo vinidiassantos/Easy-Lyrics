@@ -151,7 +151,8 @@ pre {
 .internal-page header,
 .internal-page footer {
   padding: 8px;              /* altura menor */
-  background-color: var(--bg-internal); /* mais leve */
+  background-color: #000;    /* fundo preto */
+  color: #fff;               /* texto branco para contraste */
 }
 
 .internal-page h1 {
