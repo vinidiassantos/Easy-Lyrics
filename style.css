@@ -150,17 +150,17 @@ pre {
 /* === Estilo específico para páginas internas === */
 .internal-page header,
 .internal-page footer {
-  padding: 10px;              /* altura menor */
+  padding: 8px;              /* altura menor */
   background-color: var(--bg-internal); /* mais leve */
 }
 
 .internal-page h1 {
-  font-size: 1.4em;           /* título menor */
-  margin-bottom: 6px;
+  font-size: 1.2em;           /* título menor */
+  margin-bottom: 4px;
 }
 
 .internal-page pre {
-  font-size: 0.9rem;          /* texto um pouco menor */
+  font-size: 1.2rem;          /* texto um pouco menor */
   line-height: 1.4;
 }
 
