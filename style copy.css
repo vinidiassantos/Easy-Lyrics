@@ -14,7 +14,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  line-height: 1.6;
 }
 
 /* === Container da página de música === */
@@ -25,8 +24,7 @@ body {
 }
 
 /* === Header e Footer === */
-header,
-footer {
+header, footer {
   text-align: center;
   padding: 20px;
   background-color: #eee;
@@ -66,7 +64,7 @@ pre {
 }
 
 .chord {
-  color: #b22222; /* tom mais consistente com o título */
+  color: red;
   font-weight: bold;
 }
 
@@ -158,7 +156,7 @@ pre {
   }
 
   .grid-container {
-    grid-template-columns: 1fr; /* em telas pequenas, 1 música por linha */
+    grid-template-columns: repeat(2, 1fr); /* mantém 2 músicas por linha */
   }
 
   .song-button {
