@@ -38,16 +38,10 @@ body {
 }
 
 /* === Header e Footer padrão === */
-header {
-  text-align: center;
-  padding: 8px 20px;              /* altura menor apenas no header */
-  background-color: var(--bg-neutral);
-  width: 100%;
-}
-
+header,
 footer {
   text-align: center;
-  padding: 20px;                  /* mantém altura original no footer */
+  padding: 20px;
   background-color: var(--bg-neutral);
   width: 100%;
 }
@@ -161,13 +155,9 @@ pre {
   font-size: 1.1rem;             /* fonte maior no body */
 }
 
-.internal-page header {
-  padding: 6px 12px;             /* header ainda menor nas páginas internas */
-  background-color: var(--bg-internal);
-}
-
+.internal-page header,
 .internal-page footer {
-  padding: 20px;                 /* footer mantém altura */
+  padding: 6px;                  /* header/footer menores */
   background-color: var(--bg-internal);
 }
 
