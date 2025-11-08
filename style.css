@@ -14,6 +14,7 @@
   --bg-neutral: #eee;
   --bg-internal: #fafafa;
   --text-main: #333;
+  --text-dark: #000;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   flex-direction: column;
   align-items: center;
   line-height: 1.6;
+  font-size: 1rem;
 }
 
 /* === Container da página === */
@@ -148,20 +150,26 @@ pre {
 }
 
 /* === Estilo específico para páginas internas === */
+.internal-page {
+  color: var(--text-dark);       /* texto preto */
+  font-size: 1.1rem;             /* fonte maior no body */
+}
+
 .internal-page header,
 .internal-page footer {
-  padding: 8px;              /* altura menor */
-  background-color: var(--bg-internal); /* mais leve */
+  padding: 6px;                  /* header/footer menores */
+  background-color: var(--bg-internal);
 }
 
 .internal-page h1 {
-  font-size: 1.2em;           /* título menor */
+  font-size: 1.2em;              /* título menor */
   margin-bottom: 4px;
 }
 
 .internal-page pre {
-  font-size: 1.2rem;          /* texto um pouco menor */
-  line-height: 1.4;
+  font-size: 1.1rem;             /* texto maior */
+  line-height: 1.5;
+  color: var(--text-dark);       /* garante texto preto */
 }
 
 /* === Responsividade === */
