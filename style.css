@@ -41,7 +41,7 @@ body {
 header,
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 14px;
   background-color: var(--bg-neutral);
   width: 100%;
 }
