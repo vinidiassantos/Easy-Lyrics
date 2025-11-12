@@ -40,14 +40,14 @@ body {
 /* === Header e Footer padrão === */
 header {
   text-align: center;
-  padding: 8px 20px;              /* altura menor apenas no header */
+  padding: 8px 20px;
   background-color: var(--bg-neutral);
   width: 100%;
 }
 
 footer {
   text-align: center;
-  padding: 20px;                  /* mantém altura original no footer */
+  padding: 20px;
   background-color: var(--bg-neutral);
   width: 100%;
 }
@@ -87,6 +87,17 @@ pre {
 .chord {
   color: var(--accent-red);
   font-weight: bold;
+}
+
+/* === Classes para letra e tradução === */
+.original {
+  font-weight: bold; /* frase original em negrito */
+}
+
+.translation {
+  font-size: 0.85em; /* tradução menor */
+  color: #555;       /* cor diferenciada */
+  font-style: italic; /* opcional: deixa em itálico para destacar */
 }
 
 /* === Menu principal === */
@@ -157,29 +168,29 @@ pre {
 
 /* === Estilo específico para páginas internas === */
 .internal-page {
-  color: var(--text-dark);       /* texto preto */
-  font-size: 1.1rem;             /* fonte maior no body */
+  color: var(--text-dark);
+  font-size: 1.1rem;
 }
 
 .internal-page header {
-  padding: 6px 12px;             /* header ainda menor nas páginas internas */
+  padding: 6px 12px;
   background-color: var(--bg-internal);
 }
 
 .internal-page footer {
-  padding: 20px;                 /* footer mantém altura */
+  padding: 20px;
   background-color: var(--bg-internal);
 }
 
 .internal-page h1 {
-  font-size: 1.2em;              /* título menor */
+  font-size: 1.2em;
   margin-bottom: 4px;
 }
 
 .internal-page pre {
-  font-size: 1.1rem;             /* texto maior */
+  font-size: 1.1rem;
   line-height: 1.5;
-  color: var(--text-dark);       /* garante texto preto */
+  color: var(--text-dark);
 }
 
 /* === Responsividade === */
@@ -204,7 +215,7 @@ pre {
   }
 
   .grid-container {
-    grid-template-columns: 1fr; /* em telas pequenas, 1 música por linha */
+    grid-template-columns: 1fr;
   }
 
   .song-button {
@@ -215,14 +226,4 @@ pre {
   .song-content {
     font-size: 0.85em;
   }
-
-  .original {
-  font-weight: bold;
-}
-
-.translation {
-  font-size: 0.85em;
-  color: #555;
-}
-
 }
