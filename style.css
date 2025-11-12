@@ -215,4 +215,14 @@ pre {
   .song-content {
     font-size: 0.85em;
   }
+
+  .original {
+  font-weight: bold;
+}
+
+.translation {
+  font-size: 0.85em;
+  color: #555;
+}
+
 }
