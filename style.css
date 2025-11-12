@@ -82,28 +82,23 @@ pre {
   font-size: 0.95rem;
   text-align: left;
   margin: 0 auto;
-}
-
-.chord {
-  color: var(--accent-red);
-  font-weight: bold;
+  line-height: 1.4; /* levemente mais compacto que 1.5 */
 }
 
 /* === Classes para letra e tradução === */
 .original {
-  font-weight: bold;   /* frase original em negrito */
-  display: block;      /* garante quebra de linha dentro de <pre> */
-  margin-bottom: 0.1em;/* pequeno respiro antes da tradução */
+  font-weight: bold;  /* frase original em negrito */
+  display: block;     /* garante quebra de linha dentro de <pre> */
+  margin-bottom: 0;   /* sem espaço extra antes da tradução */
 }
 
 .translation {
-  display: block;        /* coloca em nova linha */
-  font-size: 0.92em;     /* tradução levemente menor */
-  color: #090101;        /* quase preto (se quiser mais contraste, use #555) */
-  /* font-style: italic; */ /* caso queira ativar futuramente */
-  margin-bottom: 0.6em;  /* espaçamento entre pares de linhas */
+  display: block;       /* coloca em nova linha */
+  font-size: 0.92em;    /* tradução levemente menor */
+  color: #090101;       /* quase preto */
+  margin-top: 0.05em;   /* aproxima da original (quase colado) */
+  margin-bottom: 0.2em; /* espaço mínimo entre pares (original+tradução) */
 }
-
 
 /* === Menu principal === */
 .menu-container {
@@ -193,8 +188,8 @@ pre {
 }
 
 .internal-page pre {
-  font-size: 1.1rem;
-  line-height: 1.5;
+  font-size: 1.1rem;   /* texto maior nas internas */
+  line-height: 1.4;    /* consistente com o pre global */
   color: var(--text-dark);
 }
 
@@ -211,6 +206,7 @@ pre {
 
   pre {
     font-size: 0.85rem;
+    line-height: 1.35;  /* um pouco mais compacto no mobile */
   }
 
   .menu-button {
